@@ -1,19 +1,19 @@
 package com.test.xuleix.Service;
 
 import com.test.xuleix.Model.User;
-import com.test.xuleix.mapper.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.test.xuleix.mapper.UserDAO;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * Created by Tian Wang on 2015/3/30.
  */
-@Service("userService")
+@Service
 public class UserService implements IUserService {
-    @Autowired
-    private UserMapper mapper;
+    @Resource
+    private UserDAO mapper;
 
     @Override
     public List<User> getAllUsers() {
@@ -33,5 +33,10 @@ public class UserService implements IUserService {
     @Override
     public void deleteUser(long userId) {
         mapper.delete(userId);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        mapper.update(user);
     }
 }

@@ -1,5 +1,6 @@
 package com.test.xuleix.Model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -17,6 +18,9 @@ public class User implements Serializable {
     private String password;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date time;
+
+    @Autowired
+    private Car car;
 
     public User() {
         super();
@@ -70,7 +74,10 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", name=" + name + ", password=" + password
+        String temp = "User [id=" + id + ", name=" + name + ", password=" + password
                 + ", time=" + time + "]";
+        if(car != null)
+            temp += car;
+        return temp;
     }
 }
