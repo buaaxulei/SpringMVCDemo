@@ -19,7 +19,7 @@ public class User implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date time;
 
-    @Autowired
+    //@Autowired
     private Car car;
 
     public User() {

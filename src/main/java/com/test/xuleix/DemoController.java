@@ -1,9 +1,11 @@
 package com.test.xuleix;
 
 import com.test.xuleix.Model.Car;
+import com.test.xuleix.Model.Company;
 import com.test.xuleix.Model.User;
 
 import com.test.xuleix.Service.UserService;
+import com.test.xuleix.Utils.SpringContextHolder;
 import com.test.xuleix.mapper.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,6 +25,7 @@ public class DemoController {
     @RequestMapping("/index")
     public String index(){
         User user = new User("xuleix", "hahah");
+
         System.out.println(user);
         return "hello";
     }
@@ -33,4 +36,12 @@ public class DemoController {
         System.out.println(user.toString());
         return "hello";
     }
+
+    @RequestMapping("/autowired")
+    public String autowired(){
+        Company company = SpringContextHolder.getBean("company");
+        System.out.println(company.showCar());
+        return "hello";
+    }
+
 }
